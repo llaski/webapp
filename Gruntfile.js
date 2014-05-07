@@ -125,6 +125,16 @@ module.exports = function (grunt) {
             allImgs: {
                 src: '<%= config.pub%>/img',
             }
+        },
+
+        csso: {
+            dynamic_mappings: {
+                expand: true,
+                cwd: '<%= config.pub %>/css/',
+                src: ['app.css'],
+                dest: '<%= config.pub %>/css/',
+                ext: '.min.css'
+            }
         }
 
     });
@@ -139,7 +149,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('prod-build', [
         'build',
-        'imageoptim'
+        'imageoptim',
+        'csso'
     ]);
 
     grunt.registerTask('default', [
